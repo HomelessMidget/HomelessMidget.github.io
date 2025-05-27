@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homelesmidgets - Twitch Minigames</title>
+    <link rel="icon" type="image/png" href="https://github.com/HomelessMidget.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #9146ff, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(145, 70, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(145, 70, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(145, 70, 255, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            margin-bottom: 20px;
+        }
+
+        .twitch-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #9146ff, #772ce8);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+        }
+
+        .twitch-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(145, 70, 255, 0.5);
+            background: linear-gradient(45deg, #a555ff, #8639f0);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(145, 70, 255, 0.1), rgba(255, 107, 107, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(145, 70, 255, 0.5);
+        }
+
+        .game-card:hover::before {
+            opacity: 1;
+        }
+
+        .game-command {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-name {
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-transform: capitalize;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title pulse-animation">Homelesmidgets</h1>
+            <p class="subtitle">Epic Twitch Minigames Collection</p>
+            <a href="https://twitch.tv/Homelesmidgets" target="_blank" class="twitch-link">
+                🎮 Visit Channel
+            </a>
+        </header>
+
+        <div class="category-section">
+            <h2 class="category-title">🎯 Action & Adventure Games</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!crayonpuzzle')">
+                    <div class="game-command">!crayonpuzzle</div>
+                    <div class="game-name">Crayon Puzzle Challenge</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!crayonrun')">
+                    <div class="game-command">!crayonrun</div>
+                    <div class="game-name">Crayon Run Adventure</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!escape')">
+                    <div class="game-command">!escape</div>
+                    <div class="game-name">Great Escape</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!crayonsnipe')">
+                    <div class="game-command">!crayonsnipe</div>
+                    <div class="game-name">Crayon Sniper</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!expedition')">
+                    <div class="game-command">!expedition</div>
+                    <div class="game-name">Epic Expedition</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!spy')">
+                    <div class="game-command">!spy</div>
+                    <div class="game-name">Secret Spy Mission</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">🎲 Casino & Card Games</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!blackjack')">
+                    <div class="game-command">!blackjack</div>
+                    <div class="game-name">Blackjack</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!hitme')">
+                    <div class="game-command">!hitme</div>
+                    <div class="game-name">Hit Me</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!stay')">
+                    <div class="game-command">!stay</div>
+                    <div class="game-name">Stay</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">🏁 Racing & Sports</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!race')">
+                    <div class="game-command">!race</div>
+                    <div class="game-name">Speed Race</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!dragrace')">
+                    <div class="game-command">!dragrace</div>
+                    <div class="game-name">Drag Race</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!dart')">
+                    <div class="game-command">!dart</div>
+                    <div class="game-name">Dart Throwing</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!strike')">
+                    <div class="game-command">!strike</div>
+                    <div class="game-name">Bowling Strike</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">🎨 Creative & Art Games</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('freezedraw')">
+                    <div class="game-command">freezedraw</div>
+                    <div class="game-name">Freeze Draw</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!doodleflip')">
+                    <div class="game-command">!doodleflip</div>
+                    <div class="game-name">Doodle Flip</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!scribblepop')">
+                    <div class="game-command">!scribblepop</div>
+                    <div class="game-name">Scribble Pop</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!inkflip')">
+                    <div class="game-command">!inkflip</div>
+                    <div class="game-name">Ink Flip</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">🍳 Casual & Fun Games</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!bake')">
+                    <div class="game-command">!bake</div>
+                    <div class="game-name">Baking Challenge</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!fish')">
+                    <div class="game-command">!fish</div>
+                    <div class="game-name">Fishing Adventure</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!fuse')">
+                    <div class="game-command">!fuse</div>
+                    <div class="game-name">Fuse Master</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!hat')">
+                    <div class="game-command">!hat</div>
+                    <div class="game-name">Hat Collection</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!snap')">
+                    <div class="game-command">!snap</div>
+                    <div class="game-name">Snap Game</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!bomb')">
+                    <div class="game-command">!bomb</div>
+                    <div class="game-name">Bomb Defuser</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">⚔️ Battle & Strategy</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!battle')">
+                    <div class="game-command">!battle</div>
+                    <div class="game-name">Epic Battle</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!sigil')">
+                    <div class="game-command">!sigil</div>
+                    <div class="game-name">Sigil Wars</div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Click any game card to copy the command to your clipboard!</p>
+            <p>Join the fun at <strong>Twitch.tv/Homelesmidgets</strong></p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCommand(command) {
+            navigator.clipboard.writeText(command).then(function() {
+                // Create a temporary notification
+                const notification = document.createElement('div');
+                notification.textContent = `Copied: ${command}`;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    z-index: 1000;
+                    animation: slideIn 0.3s ease;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add some interactive sparkle effects
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.98) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.cssText = `
+                position: fixed;
+                left: ${x}px;
+                top: ${y}px;
+                width: 4px;
+                height: 4px;
+                background: #4ecdc4;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                animation: sparkleAnim 1s ease-out forwards;
+            `;
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                document.body.removeChild(sparkle);
+            }, 1000);
+        }
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkleAnim {
+                0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                100% { transform: scale(1) rotate(180deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+    </script>
+</body>
+</html>
