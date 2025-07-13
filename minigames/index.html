@@ -133,7 +133,71 @@
         
         .twitch-link:hover {
             transform: translateY(-2px);
+            color: black;
             box-shadow: 0 8px 25px rgba(145, 70, 255, 0.5);
+        }
+        
+        .kick-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #53fc18, #53fc18);
+            color: black;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 48px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+            margin-left: 20px;
+            will-change: transform;
+        }
+        
+        .kick-link:hover {
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 8px 25px #53fc18;
+        }
+        
+        .tiktok-link {
+            display: inline-block;
+            background: linear-gradient(#010101, #69C9D0, #FFFFFF, #EE1D52);
+            color: black;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 48px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+            margin-left: 20px;
+            will-change: transform;
+        }
+        
+        .tiktok-link:hover {
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 8px 25px (#010101, #69C9D0, #FFFFFF, #EE1D52);
+        }
+        
+        .youtube-link {
+            display: inline-block;
+            background: linear-gradient(#FF0000, #FFFFFF, #282828);
+            color: black;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 48px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+            margin-left: 20px;
+            will-change: transform;
+        }
+        
+        .youtube-link:hover {
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 8px 25px (#FF0000, #FFFFFF, #282828);
         }
         
         .games-grid {
@@ -225,7 +289,7 @@
             right: 20px;
             background: linear-gradient(45deg, #4e5bcd, #44a08d);
             color: white;
-            padding: 15px 25px;
+            padding: 22px 25px;
             border-radius: 10px;
             font-weight: bold;
             z-index: 1000;
@@ -240,7 +304,7 @@
         
         .notification.hide {
             transform: translateX(100%);
-            opacity: 0;
+            opacity: 100;
         }
         
         @media (max-width: 768px) {
@@ -283,50 +347,107 @@
     <div class="container">
         <header class="header">
             <h1 class="title">Homelesmidgets</h1>
-            <p class="subtitle">Epic Twitch Minigames Collection</p>
+            <p class="subtitle">Epic Twitch & Kick & Discord Minigames Collection</p>
             <div class="command-counter" id="commandCounter">
                 📊 Total Minigames: <span id="totalCommands">0</span>
             </div>
             <a href="https://twitch.tv/Homelesmidgets" target="_blank" class="twitch-link">
-                🎮 Visit Channel
-            </a>
+                <img src="https://github.com/HomelessMidget.png" alt="Homelesmidgets Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                <strong>Homelesmidgets</strong> on Twitch 🎮 Visit Channel
+                <a href="https://kick.com/@Homelesmidgets" target="_blank" class="kick-link">
+                    <img src="https://github.com/HomelessMidget.png" alt="Homelesmidgets Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                    <strong>Homelesmidgets</strong> on Kick 🎮 Visit Channel
+                    <a href="https://tiktok.com/@Homelesmidgets" target="_blank" class="tiktok-link">
+                        <img src="https://github.com/HomelessMidget.png" alt="Homelesmidgets Logo" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                        <strong>Homelesmidgets</strong> on TikTok 🎮 Visit Channel
+                    </a>
         </header>
+        <div class="notification hide"></div>
+
+
 
         <div class="category-section">
-            <h2 class="category-title">🎯 Action & Adventure Games</h2>
+            <h2 class="category-title">Twitch Commands</h2>
             <div class="games-grid">
-                <div class="game-card" onclick="copyCommand('!crayonpuzzle')">
-                    <div class="game-command">!crayonpuzzle</div>
-                    <div class="game-name">Crayon Puzzle Challenge</div>
+                <div class="game-card" onclick="copyCommand('?boom')">
+                    <div class="game-command">?boom</div>
+                    <div class="game-name">teleports user to a random location</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('!crayonrun')">
-                    <div class="game-command">!crayonrun</div>
-                    <div class="game-name">Crayon Run Adventure</div>
+                <div class="game-card" onclick="copyCommand('!tts')">
+                    <div class="game-command">!tts</div>
+                    <div class="game-name">Text-to-Speech</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('!escape')">
-                    <div class="game-command">!escape</div>
-                    <div class="game-name">Great Escape</div>
+                <div class="game-card" onclick="copyCommand('?roll')">
+                    <div class="game-command">?roll</div>
+                    <div class="game-name">rolls a dice</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('!crayonsnipe')">
-                    <div class="game-command">!crayonsnipe</div>
-                    <div class="game-name">Crayon Sniper</div>
+                <div class="game-card" onclick="copyCommand('?wyr')">
+                    <div class="game-command">?wyr </div>
+                    <div class="game-name">Would You Rather game</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('!expedition')">
-                    <div class="game-command">!expedition</div>
-                    <div class="game-name">Epic Expedition</div>
+                <div class="game-card" onclick="copyCommand('?wyr')">
+                    <div class="game-command">?wyr </div>
+                    <div class="game-name">Would You Rather game</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('!spy')">
-                    <div class="game-command">!spy</div>
-                    <div class="game-name">Secret Spy Mission</div>
+                <div class="game-card" onclick="copyCommand('?uptime')">
+                    <div class="game-command">?uptime</div>
+                    <div class="game-name">Displays the current bot uptime</div>
                 </div>
             </div>
         </div>
-
         <div class="category-section">
-            <h2 class="category-title">🎲 Casino & Card Games</h2>
+            <h2 class="category-title">kick Commands</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="copyCommand('!tts')">
+                    <div class="game-command">!tts</div>
+                    <div class="game-name">Text-to-Speech</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!followage')">
+                    <div class="game-command">!followage</div>
+                    <div class="game-name">Check how long a user has been following the channel</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('!uptime')">
+                    <div class="game-command">!uptime</div>
+                    <div class="game-name">Displays the current bot uptime</div>
+                </div>
+
+            </div>
+            <div class="category-section">
+                <h2 class="category-title">🎮 Discord Commands</h2>
+                <div class="games-grid">
+                    <div class="game-card" onclick="copyCommand('?wyr')">
+                        <div class="game-command">?wyr</div>
+                        <div class="game-name">Would You Rather game</div>
+                    </div>
+                    <div class="game-card" onclick="copyCommand('?truth')">
+                        <div class="game-command">?truth</div>
+                        <div class="game-name">Ask a truth question</div>
+                    </div>
+                    <div class="game-card" onclick="copyCommand('?dadjoke')">
+                        <div class="game-command">?dadjoke</div>
+                        <div class="game-name">Tell a random dad joke</div>
+                    </div>
+                </div>
+            </div> tiktok
+            <div class="category-section">
+                <h2 class="category-title">🎮 TikTok Commands</h2>
+                <div class="games-grid">
+                    <div class="game-card" onclick="copyCommand('!tts')">
+                        <div class="game-command">!tts</div>
+                        <div class="game-name">Text-to-Speech</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="category-section">
+            <h2 class="category-title">🎲 Crayon Casino</h2>
             <div class="games-grid">
                 <!-- Blackjack Commands -->
-                <div class="game-card" onclick="copyCommand('?blackjack')">
+                <div class="game-card" onclick="copyCommand('?gamble')">
+                    <div class="game-command">?gamble [bet]</div>
+                    <div class="game-name">Start a gambling game</div>
+                </div>
+                <div class="game-card" onclick="copyCommand('?bj')">
                     <div class="game-command">?blackjack [bet]</div>
                     <div class="game-name">Start a thrilling Blackjack game to hit 21</div>
                 </div>
@@ -346,84 +467,13 @@
                     <div class="game-command">?stay</div>
                     <div class="game-name">Alias for ?stand in Blackjack</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('?game')">
-                    <div class="game-command">?game</div>
-                    <div class="game-name">Check Blackjack game status</div>
-                </div>
                 <div class="game-card" onclick="copyCommand('?bj')">
                     <div class="game-command">?bj [bet]</div>
                     <div class="game-name">Alias for ?blackjack</div>
                 </div>
                 <!-- Poker Commands -->
-                <div class="game-card" onclick="copyCommand('?poker')">
-                    <div class="game-command">?poker [bet]</div>
-                    <div class="game-name">Start Texas Hold'em against the dealer</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?call')">
-                    <div class="game-command">?call</div>
-                    <div class="game-name">Go to showdown in Poker</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?fold')">
-                    <div class="game-command">?fold</div>
-                    <div class="game-name">Surrender your Poker game</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?pokerstatus')">
-                    <div class="game-command">?pokerstatus</div>
-                    <div class="game-name">Check your Poker hand and bet</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?pstatus')">
-                    <div class="game-command">?pstatus</div>
-                    <div class="game-name">Alias for ?pokerstatus</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?community')">
-                    <div class="game-command">?community</div>
-                    <div class="game-name">View Poker community cards</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?board')">
-                    <div class="game-command">?board</div>
-                    <div class="game-name">Alias for ?community</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?holdem')">
-                    <div class="game-command">?holdem</div>
-                    <div class="game-name">Alias for ?poker</div>
-                </div>
-                <!-- Pool Commands -->
-                <div class="game-card" onclick="copyCommand('?pool')">
-                    <div class="game-command">?pool [bet] [pulls]</div>
-                    <div class="game-name">Fish for emotes (1-10 pulls)</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?poolinfo')">
-                    <div class="game-command">?poolinfo</div>
-                    <div class="game-name">Emote rarities and payouts</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?poolhelp')">
-                    <div class="game-command">?poolhelp</div>
-                    <div class="game-name">Alias for ?poolinfo</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?poolrates')">
-                    <div class="game-command">?poolrates</div>
-                    <div class="game-name">Rarity odds for Pool</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?rates')">
-                    <div class="game-command">?rates</div>
-                    <div class="game-name">Alias for ?poolrates</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?jackpot')">
-                    <div class="game-command">?jackpot</div>
-                    <div class="game-name">Legendary Jackpot info (100x)</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?legendary')">
-                    <div class="game-command">?legendary</div>
-                    <div class="game-name">Alias for ?jackpot</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?fish')">
-                    <div class="game-command">?fish</div>
-                    <div class="game-name">Alias for ?pool</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?pull')">
-                    <div class="game-command">?pull</div>
-                    <div class="game-name">Alias for ?pool</div>
-                </div>
+
+
                 <!-- Slots Commands -->
                 <div class="game-card" onclick="copyCommand('?slots')">
                     <div class="game-command">?slots [bet]</div>
@@ -445,208 +495,19 @@
                     <div class="game-command">?slot</div>
                     <div class="game-name">Alias for ?slots</div>
                 </div>
-                <div class="game-card" onclick="copyCommand('?spin')">
-                    <div class="game-command">?spin</div>
-                    <div class="game-name">Alias for ?slots</div>
-                </div>
             </div>
         </div>
 
-        <div class="category-section">
-            <h2 class="category-title">🏁 Racing & Sports</h2>
-            <div class="games-grid">
-                <div class="game-card" onclick="copyCommand('!race')">
-                    <div class="game-command">!race</div>
-                    <div class="game-name">Speed Race</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!dragrace')">
-                    <div class="game-command">!dragrace</div>
-                    <div class="game-name">Drag Race</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!dart')">
-                    <div class="game-command">!dart</div>
-                    <div class="game-name">Dart Throwing</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl')">
-                    <div class="game-command">?bowl [bet] [frames]</div>
-                    <div class="game-name">Roll for strikes in Bowling (1-5 frames)</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl info')">
-                    <div class="game-command">?bowl info</div>
-                    <div class="game-name">Bowling outcomes and payouts</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl help')">
-                    <div class="game-command">?bowl help</div>
-                    <div class="game-name">Alias for ?bowl info</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl rates')">
-                    <div class="game-command">?bowl rates</div>
-                    <div class="game-name">Bowling rarity odds</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl perfect')">
-                    <div class="game-command">?bowl perfect</div>
-                    <div class="game-name">Perfect Game info (300x)</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowl stek')">
-                    <div class="game-command">?bowl stek</div>
-                    <div class="game-name">Stek (three strikes) info</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?bowling')">
-                    <div class="game-command">?bowling</div>
-                    <div class="game-name">Alias for ?bowl</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?strike')">
-                    <div class="game-command">?strike</div>
-                    <div class="game-name">Alias for ?bowl</div>
-                </div>
-                <!-- Dart Commands -->
-                <div class="game-card" onclick="copyCommand('?darts')">
-                    <div class="game-command">?darts [bet] [num_darts]</div>
-                    <div class="game-name">Throw darts for big payouts (1-5 darts)</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?darthelp')">
-                    <div class="game-command">?darthelp</div>
-                    <div class="game-name">Darts gameplay and payout info</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?dartboard')">
-                    <div class="game-command">?dartboard</div>
-                    <div class="game-name">View dartboard targets and multipliers</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?dartodds')">
-                    <div class="game-command">?dartodds</div>
-                    <div class="game-name">Odds for special dart targets</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?dart')">
-                    <div class="game-command">?dart</div>
-                    <div class="game-name">Alias for ?darts</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?throw')">
-                    <div class="game-command">?throw</div>
-                    <div class="game-name">Alias for ?darts</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?board')">
-                    <div class="game-command">?board</div>
-                    <div class="game-name">Alias for ?dartboard</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('?dartchance')">
-                    <div class="game-command">?dartchance</div>
-                    <div class="game-name">Alias for ?dartodds</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="category-section">
-            <h2 class="category-title">🎨 Creative & Art Games</h2>
-            <div class="games-grid">
-                <div class="game-card" onclick="copyCommand('freezedraw')">
-                    <div class="game-command">freezedraw</div>
-                    <div class="game-name">Freeze Draw</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!doodleflip')">
-                    <div class="game-command">!doodleflip</div>
-                    <div class="game-name">Doodle Flip</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!scribblepop')">
-                    <div class="game-command">!scribblepop</div>
-                    <div class="game-name">Scribble Pop</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!inkflip')">
-                    <div class="game-command">!inkflip</div>
-                    <div class="game-name">Ink Flip</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!mixup')">
-                    <div class="game-command">!mixup</div>
-                    <div class="game-name">Crayon Mix-Up is a wild colouring experiment!</div>
-                </div>
-            </div>
-        </div>
+        <footer class="footer">
+            <p>Click any game card to copy the command to your clipboard!</p>
+            <p>Join the fun at <strong><a href="https://twitch.tv/Homelesmidgets" target="_blank" class="twitch-link">Twitch</a></strong></p>
+            <p>Join the fun at <strong><a href="https://kick.com/Homelesmidgets" target="_blank" class="kick-link">Kick</a></strong></p>
+            <p>Follow on <strong><a href="https://www.tiktok.com/@homelesmidgets" target="_blank" class="tiktok-link">TikTok</a></strong></p>
+            <p>Subscribe on <strong><a href="https://www.youtube.com/@Homelesmidgets" target="_blank" class="youtube-link">YouTube</a></strong></p>
 
-        <div class="category-section">
-            <h2 class="category-title">🍳 Casual & Fun Games</h2>
-            <div class="games-grid">
-                <div class="game-card" onclick="copyCommand('!bake')">
-                    <div class="game-command">!bake</div>
-                    <div class="game-name">Baking Challenge</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!fish')">
-                    <div class="game-command">!fish</div>
-                    <div class="game-name">Fishing Adventure</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!fuse')">
-                    <div class="game-command">!fuse</div>
-                    <div class="game-name">Fuse Master</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!hat')">
-                    <div class="game-command">!hat</div>
-                    <div class="game-name">Hat Collection</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!snap')">
-                    <div class="game-command">!snap</div>
-                    <div class="game-name">Snap Game</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!bomb')">
-                    <div class="game-command">!bomb</div>
-                    <div class="game-name">Bomb Defuser</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!showdown')">
-                    <div class="game-command">!showdown</div>
-                    <div class="game-name">A wild and wacky showdown erupts</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!blend')">
-                    <div class="game-command">!blend</div>
-                    <div class="game-name">Crayon chaos in a blender</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!tug')">
-                    <div class="game-command">!tug</div>
-                    <div class="game-name">Crayon Tug-O-War showdown</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!scribble')">
-                    <div class="game-command">!scribble</div>
-                    <div class="game-name">Scribble Showdown with doodles</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!cook')">
-                    <div class="game-command">!cook</div>
-                    <div class="game-name">Wax Chef Challenge with crayon dishes</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!rr')">
-                    <div class="game-command">!rr</div>
-                    <div class="game-name">Rainbow Roller with a color wheel</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!slide')">
-                    <div class="game-command">!slide</div>
-                    <div class="game-name">Crayon Slide race with stek tokens</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!toss')">
-                    <div class="game-command">!toss</div>
-                    <div class="game-name">Toss a crayon for a perfect landing</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!clash')">
-                    <div class="game-command">!clash</div>
-                    <div class="game-name">Blend Battle with crayon duels</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <h2 class="category-title">⚔️ Battle & Strategy</h2>
-            <div class="games-grid">
-                <div class="game-card" onclick="copyCommand('!battle')">
-                    <div class="game-command">!battle</div>
-                    <div class="game-name">Epic Battle</div>
-                </div>
-                <div class="game-card" onclick="copyCommand('!sigil')">
-                    <div class="game-command">!sigil</div>
-                    <div class="game-name">Sigil Wars</div>
-                </div>
-            </div>
-        </div>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <p>Click any game card to copy the command to your clipboard!</p>
-        <p>Join the fun at <strong><a href="https://twitch.tv/Homelesmidgets" target="_blank" class="twitch-link">Twitch</a></strong></p>
-    </footer>
-
     <script>
         // Pre-create notification element to reuse
         const notification = document.createElement('div');
