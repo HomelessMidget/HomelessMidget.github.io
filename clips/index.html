@@ -329,7 +329,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.3/video.min.js"></script>
     <script>
-        const TWITCH_CLIENT_ID = 'kimne78kx3ncx6brgo4mv6wki5h1ko';
+        const TWITCH_CLIENT_ID = 'secrets.TWITCH_CLIENT_ID ';
         const BROADCASTER_NAME = 'homelesmidgets';
         
         let player;
@@ -346,7 +346,7 @@
 
             const watermark = document.createElement('div');
             watermark.className = 'vjs-watermark';
-            watermark.innerHTML = '<img src="https://github.com/homelesmidgets.png" alt="Watermark">';
+            watermark.innerHTML = '<img src="https://github.com/homelesmidgets.png';
             player.el().appendChild(watermark);
         }
 
